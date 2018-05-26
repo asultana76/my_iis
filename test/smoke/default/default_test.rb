@@ -13,6 +13,30 @@ unless os.windows?
 end
 
 # This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+describe windows_feature('Web-Server') do
+  it { should be_installed }
 end
+
+# Ensure IIS Service is running
+describe service('W3SVC') do
+  it { should be_installed }
+  it { should be_running }
+end
+
+# Ensure the WebServer is running on port 80
+describe port(80) do
+  it { should be_listening }
+end
+
+describe file ('c:\inetpub\wwwroot\Default.html') do
+  it { should exist }
+  it { should be_file }
+  its('content') { should match(/Hello world! Authored by Jane Doe/) }
+end
+
+describe file('C:\temp\my_iis.tgz') do
+  it { should exist }
+  it { should be_file }
+end
+
+  

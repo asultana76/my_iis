@@ -1,6 +1,11 @@
 ---
 driver:
-  name: vagrant
+  name: hyperv
+  parent_vhd_folder: D:\Hyper-V\windows-2012-r2
+  parent_vhd_name: rtxlbase-Disk0.vhdx
+  vm_generation: 2
+  vm_switch: LabNetwork
+  memory_startup_bytes: 2GB
 
 provisioner:
   name: chef_zero
@@ -13,8 +18,12 @@ verifier:
   name: inspec
 
 platforms:
-  - name: oracle-7
-  - name: centos 7
+  - name: windows-2012-r2
+
+transport:
+  name: winrm
+  elevated: true
+  password: Ntscpq1
 
 suites:
   - name: default
@@ -24,31 +33,3 @@ suites:
       inspec_tests:
         - test/smoke/default
     attributes:
-
-    # If Windows, use the code below
-    # ---
-    # driver:
-    #   name: hyperv
-    #   parent_vhd_folder: 'D:\Hyper-V\rtxlbase\Virtual Hard Disks'
-    #   parent_vhd_name: rtxlbase-Disk0.vhdx
-    #   vm_generation: 2
-    #   vm_switch: LabNetwork
-    #   memory_startup_bytes: 2GB
-    
-    # provisioner:
-    #   name: chef_zero
-    #   # You may wish to disable always updating cookbooks in CI or other testing environments.
-    #   # For example:
-    #   #   always_update_cookbooks: true
-      
-    # transport:
-    #   name: winrm
-    #   elevated: true
-    #   password: Ntscpq1
-    
-    # verifier:
-    #   name: inspec
-    #   #format: doc
-      
-    #   platforms:
-    #   - name: windows-2012-r2
