@@ -2,7 +2,7 @@
 driver:
   name: hyperv
   parent_vhd_folder: D:\Hyper-V\windows-2012-r2
-  parent_vhd_name: rtxlbase-Disk0.vhdx
+  parent_vhd_name: Win2012r2-Disk0.vhdx
   vm_generation: 2
   vm_switch: LabNetwork
   memory_startup_bytes: 2GB
@@ -23,7 +23,7 @@ platforms:
 transport:
   name: winrm
   elevated: true
-  password: Ntscpq1
+  password: somethingiwontwritehere
 
 suites:
   - name: default
