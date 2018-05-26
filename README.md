@@ -4,6 +4,3 @@ This is the excersice to create a cookbook to get IISWeb-Server role installed w
 
 This is the working code that has been tested in my lab.
 
-#� �m�y�_�i�i�s�
-�
-�
